@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل قنوات واتساب 2026 | لوحة تحكم الجوكر</title>
+    <title>دليل قنوات واتساب 2026 | الجوكر</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --primary: #25D366; --dark: #0b141a; --glass: rgba(255, 255, 255, 0.08); --admin: #34b7f1; }
@@ -11,139 +11,106 @@
         body { background: linear-gradient(rgba(11, 20, 26, 0.9), rgba(11, 20, 26, 0.9)), url('IMG-20251128-WA0004(1).jpg'); background-size: cover; background-attachment: fixed; color: #fff; padding: 20px; }
         .container { max-width: 1200px; margin: 0 auto; }
         
-        /* لوحة التحكم المخفية */
-        #admin-panel { display: none; background: #1c2c33; padding: 25px; border-radius: 20px; border: 2px solid var(--admin); margin-bottom: 30px; animation: fadeIn 0.5s; }
-        .admin-tabs { display: flex; gap: 10px; margin-bottom: 20px; }
-        .tab-btn { padding: 10px 20px; background: var(--glass); border: none; color: #fff; cursor: pointer; border-radius: 10px; }
-        .tab-btn.active { background: var(--admin); }
-        
-        .form-group { margin-bottom: 15px; }
-        .form-group input, .form-group select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #34495e; background: #0b141a; color: #fff; }
-        
-        /* أيقونة الدخول المخفية */
-        #secret-lock { position: fixed; bottom: 15px; left: 15px; opacity: 0.05; cursor: pointer; font-size: 20px; z-index: 9999; transition: 0.3s; }
-        #secret-lock:hover { opacity: 1; }
-        
-        .login-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center; }
-        .login-card { background: #1c2c33; padding: 40px; border-radius: 25px; width: 90%; max-width: 400px; text-align: center; border: 1px solid var(--primary); }
+        /* زر الثلاث نقاط السري */
+        .top-nav { display: flex; justify-content: flex-end; padding: 10px; position: sticky; top: 0; z-index: 1000; }
+        .menu-dots { font-size: 24px; cursor: pointer; padding: 10px; color: var(--primary); transition: 0.3s; }
+        .menu-dots:hover { transform: rotate(90deg); }
 
-        /* تنسيق القنوات */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
-        .card { background: var(--glass); border-radius: 20px; padding: 15px; text-align: center; position: relative; }
+        /* نافذة تسجيل الدخول */
+        .login-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
+        .login-content { background: #1c2c33; padding: 40px; border-radius: 20px; text-align: center; border: 1px solid var(--primary); width: 90%; max-width: 400px; }
+
+        /* لوحة المسؤول المنسدلة */
+        #admin-hub { display: none; background: #1c2c33; padding: 20px; border-radius: 15px; border: 2px solid var(--admin); margin-bottom: 30px; }
+        .admin-form input, .admin-form select { width: 100%; padding: 12px; margin: 8px 0; border-radius: 10px; border: 1px solid #34495e; background: #0b141a; color: #fff; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-top: 20px; }
+        .card { background: var(--glass); border-radius: 20px; padding: 15px; text-align: center; transition: 0.3s; position: relative; }
         .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 15px; margin-bottom: 12px; }
-        .admin-actions { display: none; position: absolute; top: 10px; right: 10px; gap: 5px; }
-        .edit-btn { background: #f1c40f; color: #000; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
-        .delete-btn { background: #e74c3c; color: #fff; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+        .admin-tools { display: none; position: absolute; top: 5px; right: 5px; }
         
         .btn { display: block; background: var(--primary); color: #000; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: bold; }
         footer { text-align: center; padding: 60px; color: #64748b; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div id="secret-lock" onclick="openLogin()">🔐</div>
+    <div class="top-nav">
+        <div class="menu-dots" onclick="openGate()">⋮</div>
+    </div>
 
-    <div id="login-overlay" class="login-overlay">
-        <div class="login-card">
-            <h2 style="color:var(--primary); margin-bottom:20px;">دخول الجوكر 👨‍🦯</h2>
-            <input type="email" id="admin-email" placeholder="البريد الإلكتروني المسموح" style="width:100%; padding:12px; margin-bottom:15px; border-radius:10px;">
-            <button onclick="verifyAdmin()" style="width:100%; padding:12px; background:var(--primary); border:none; border-radius:10px; font-weight:bold; cursor:pointer;">تأكيد الهوية</button>
-            <button onclick="closeLogin()" style="margin-top:10px; background:none; border:none; color:#64748b; cursor:pointer;">إلغاء</button>
+    <div id="gate" class="login-modal">
+        <div class="login-content">
+            <h2 style="color:var(--primary)">بوابة الجوكر 👨‍🦯</h2>
+            <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 20px;">تأكيد هوية المشرف فقط</p>
+            <input type="email" id="admin-mail" placeholder="ادخل البريد المعتمد" style="width:100%; padding:12px; border-radius:10px; margin-bottom:15px;">
+            <button onclick="verifyGate()" style="width:100%; padding:12px; background:var(--primary); border:none; border-radius:10px; font-weight:bold; cursor:pointer;">تأكيد</button>
+            <button onclick="closeGate()" style="background:none; border:none; color:#64748b; margin-top:15px; cursor:pointer;">إلغاء</button>
         </div>
     </div>
 
-    <div id="admin-panel">
-        <div class="admin-tabs">
-            <button class="tab-btn active" onclick="switchTab('add')">➕ إضافة قناة</button>
-            <button class="tab-btn" onclick="switchTab('stats')">📊 الإحصائيات</button>
-            <button onclick="logoutAdmin()" style="margin-right:auto; background:#e74c3c;" class="tab-btn">خروج</button>
+    <div id="admin-hub">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <h3 style="color:var(--admin)">📊 الإدارة والإحصائيات</h3>
+            <button onclick="location.reload()" style="background:#e74c3c; color:white; border:none; padding:5px 15px; border-radius:8px;">خروج</button>
+        </div>
+        
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:20px; text-align:center;">
+            <div style="background:var(--glass); padding:10px; border-radius:10px;"><h4>1,620</h4><p style="font-size:0.7rem">زيارة</p></div>
+            <div style="background:var(--glass); padding:10px; border-radius:10px;"><h4>412</h4><p style="font-size:0.7rem">نقرة</p></div>
+            <div style="background:var(--glass); padding:10px; border-radius:10px;"><h4>18</h4><p style="font-size:0.7rem">قناة</p></div>
         </div>
 
-        <div id="add-tab">
-            <h3>إضافة قناة جديدة للموقع</h3>
-            <div class="form-group">
-                <input type="text" id="ch-name" placeholder="اسم القناة">
-                <input type="text" id="ch-img" placeholder="اسم صورة الملف المرفوعة (مثل: IMG-2025.jpg)">
-                <input type="text" id="ch-link" placeholder="رابط قناة الواتساب">
-                <select id="ch-cat">
-                    <option value="ضحك">ضحك وتسلية</option>
-                    <option value="حب">حب ومشاعر</option>
-                    <option value="هدوء">هدوء وروحانيات</option>
-                </select>
-                <button onclick="addNewChannel()" style="width:100%; padding:12px; background:var(--admin); border:none; border-radius:10px; color:#fff; font-weight:bold; margin-top:10px;">حفظ ونشر القناة</button>
-            </div>
-        </div>
-
-        <div id="stats-tab" style="display:none;">
-            <h3>الرؤى والإحصائيات الحالية</h3>
-            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:15px; margin-top:15px;">
-                <div style="background:var(--glass); padding:20px; border-radius:15px; text-align:center;"><h4>1,452</h4><p>زيارة فريدة</p></div>
-                <div style="background:var(--glass); padding:20px; border-radius:15px; text-align:center;"><h4>320</h4><p>نقرات الروابط</p></div>
-                <div style="background:var(--glass); padding:20px; border-radius:15px; text-align:center;"><h4>18</h4><p>إجمالي القنوات</p></div>
-            </div>
+        <div class="admin-form">
+            <h4 style="margin-bottom:10px;">➕ إضافة قناة جديدة</h4>
+            <input type="text" id="new-name" placeholder="اسم القناة">
+            <input type="text" id="new-img" placeholder="اسم ملف الصورة (مثال: IMG-2025...)">
+            <input type="text" id="new-url" placeholder="رابط القناة">
+            <button onclick="addChannel()" style="width:100%; padding:12px; background:var(--admin); border:none; border-radius:10px; color:#fff; font-weight:bold;">نشر الآن</button>
         </div>
     </div>
 
     <header><h1>🌟 دليل قنوات واتساب 2026</h1><p>بإشراف الجوكر</p></header>
 
-    <div id="main-content">
-        <h2 class="section-title">🔥 القنوات المضافة</h2>
-        <div class="grid" id="channels-grid">
-            <div class="card">
-                <div class="admin-actions"><button class="edit-btn">تعديل</button><button class="delete-btn">حذف</button></div>
-                <img src="IMG-20251127-WA0012(1).jpg">
-                <h3>نكت وصور مضحكة</h3>
-                <a href="https://whatsapp.com/channel/0029VaFDOVyGE56kJdojZ21y" class="btn">انضم الآن</a>
-            </div>
-            </div>
-    </div>
+    <div class="grid" id="main-grid">
+        <div class="card">
+            <div class="admin-tools"><button style="background:red; color:white; border:none; padding:2px 8px; border-radius:5px;">حذف</button></div>
+            <img src="IMG-20251127-WA0012(1).jpg">
+            <h3>نكت وصور مضحكة</h3>
+            <a href="https://whatsapp.com/channel/0029VaFDOVyGE56kJdojZ21y" class="btn">انضم الآن</a>
+        </div>
+        </div>
 
     <footer><p>جميع الحقوق محفوظة <span style="color:var(--primary); font-weight:bold;">للجوكر 👨‍🦯</span> &copy; 2026</p></footer>
 </div>
 
 <script>
-    function openLogin() { document.getElementById('login-overlay').style.display = 'flex'; }
-    function closeLogin() { document.getElementById('login-overlay').style.display = 'none'; }
+    function openGate() { document.getElementById('gate').style.display = 'flex'; }
+    function closeGate() { document.getElementById('gate').style.display = 'none'; }
 
-    function verifyAdmin() {
-        const email = document.getElementById('admin-email').value;
-        if(email === "almashwlyamyn@gmail.com") {
-            alert("أهلاً بك يا جوكر! تم فتح صلاحيات الإدارة.");
-            document.getElementById('login-overlay').style.display = 'none';
-            document.getElementById('admin-panel').style.display = 'block';
-            document.querySelectorAll('.admin-actions').forEach(el => el.style.display = 'flex');
+    function verifyGate() {
+        const mail = document.getElementById('admin-mail').value;
+        if(mail === "almashwlyamyn@gmail.com") {
+            alert("مرحباً بك يا جوكر. تم تفعيل وضع المشرف.");
+            document.getElementById('gate').style.display = 'none';
+            document.getElementById('admin-hub').style.display = 'block';
+            document.querySelectorAll('.admin-tools').forEach(t => t.style.display = 'block');
         } else {
-            alert("البريد غير صحيح. الوصول مرفوض!");
+            alert("البريد غير مصرح له!");
         }
     }
 
-    function switchTab(tab) {
-        document.getElementById('add-tab').style.display = tab === 'add' ? 'block' : 'none';
-        document.getElementById('stats-tab').style.display = tab === 'stats' ? 'block' : 'none';
-    }
-
-    function addNewChannel() {
-        const name = document.getElementById('ch-name').value;
-        const img = document.getElementById('ch-img').value;
-        const link = document.getElementById('ch-link').value;
-        
-        if(name && img && link) {
-            const grid = document.getElementById('channels-grid');
-            const newCard = `
-                <div class="card">
-                    <div class="admin-actions" style="display:flex"><button class="edit-btn">تعديل</button><button class="delete-btn">حذف</button></div>
-                    <img src="${img}">
-                    <h3>${name}</h3>
-                    <a href="${link}" class="btn">انضم الآن</a>
-                </div>`;
-            grid.innerHTML = newCard + grid.innerHTML;
-            alert("تمت إضافة القناة بنجاح!");
+    function addChannel() {
+        const name = document.getElementById('new-name').value;
+        const img = document.getElementById('new-img').value;
+        const url = document.getElementById('new-url').value;
+        if(name && img && url) {
+            const grid = document.getElementById('main-grid');
+            grid.innerHTML = `<div class="card"><div class="admin-tools" style="display:block"><button style="background:red; color:white; border:none; padding:2px 8px; border-radius:5px;">حذف</button></div><img src="${img}"><h3>${name}</h3><a href="${url}" class="btn">انضم الآن</a></div>` + grid.innerHTML;
+            alert("تمت الإضافة بنجاح!");
         }
     }
-
-    function logoutAdmin() { location.reload(); }
 </script>
 </body>
 </html>
