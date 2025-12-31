@@ -3,66 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل قنوات واتساب 2026 | الجوكر</title>
+    <title>دليل قنوات واتساب 2026 | لوحة تحكم الجوكر</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #25D366; --dark: #0b141a; --glass: rgba(255, 255, 255, 0.08); }
+        :root { --primary: #25D366; --dark: #0b141a; --glass: rgba(255, 255, 255, 0.08); --admin: #34b7f1; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { 
-            background: linear-gradient(rgba(11, 20, 26, 0.9), rgba(11, 20, 26, 0.9)), url('IMG-20251128-WA0004(1).jpg'); 
-            background-size: cover; background-attachment: fixed; color: #fff; padding: 20px;
-        }
+        body { background: linear-gradient(rgba(11, 20, 26, 0.9), rgba(11, 20, 26, 0.9)), url('IMG-20251128-WA0004(1).jpg'); background-size: cover; background-attachment: fixed; color: #fff; padding: 20px; }
         .container { max-width: 1200px; margin: 0 auto; }
-        header { text-align: center; padding: 50px 0; }
-        header h1 { font-size: 2.5rem; color: var(--primary); text-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
-        .section-title { margin: 30px 0 20px; color: var(--primary); border-right: 4px solid var(--primary); padding-right: 15px; font-size: 1.4rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: var(--glass); backdrop-filter: blur(10px); border-radius: 20px; padding: 15px; text-align: center; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
-        .card:hover { transform: translateY(-8px); border-color: var(--primary); background: rgba(255,255,255,0.12); }
+        
+        /* لوحة التحكم المخفية */
+        #admin-panel { display: none; background: #1c2c33; padding: 25px; border-radius: 20px; border: 2px solid var(--admin); margin-bottom: 30px; animation: fadeIn 0.5s; }
+        .admin-tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab-btn { padding: 10px 20px; background: var(--glass); border: none; color: #fff; cursor: pointer; border-radius: 10px; }
+        .tab-btn.active { background: var(--admin); }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #34495e; background: #0b141a; color: #fff; }
+        
+        /* أيقونة الدخول المخفية */
+        #secret-lock { position: fixed; bottom: 15px; left: 15px; opacity: 0.05; cursor: pointer; font-size: 20px; z-index: 9999; transition: 0.3s; }
+        #secret-lock:hover { opacity: 1; }
+        
+        .login-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center; }
+        .login-card { background: #1c2c33; padding: 40px; border-radius: 25px; width: 90%; max-width: 400px; text-align: center; border: 1px solid var(--primary); }
+
+        /* تنسيق القنوات */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+        .card { background: var(--glass); border-radius: 20px; padding: 15px; text-align: center; position: relative; }
         .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 15px; margin-bottom: 12px; }
-        .btn { display: block; background: var(--primary); color: #000; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 0.85rem; }
-        footer { text-align: center; padding: 60px; color: #64748b; font-size: 1.1rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px; }
-        .copyright { color: var(--primary); font-weight: bold; }
+        .admin-actions { display: none; position: absolute; top: 10px; right: 10px; gap: 5px; }
+        .edit-btn { background: #f1c40f; color: #000; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+        .delete-btn { background: #e74c3c; color: #fff; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+        
+        .btn { display: block; background: var(--primary); color: #000; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: bold; }
+        footer { text-align: center; padding: 60px; color: #64748b; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
+
 <div class="container">
-    <header><h1>🌟 دليل قنوات واتساب 2026</h1><p>عالم الترفيه بإشراف الجوكر</p></header>
+    <div id="secret-lock" onclick="openLogin()">🔐</div>
 
-    <h2 class="section-title">😂 الضحك والترفيه</h2>
-    <div class="grid">
-        <div class="card"><img src="IMG-20251127-WA0012(1).jpg"><h3>نكت وصور مضحكة</h3><a href="https://whatsapp.com/channel/0029VaFDOVyGE56kJdojZ21y" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20251231-WA0125.jpg"><h3>AMI – نكت محششين</h3><a href="https://whatsapp.com/channel/0029VaetYGr2P59nEFQQDN2y" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20260101-WA0000(1).jpg"><h3>AI صور مضحكة</h3><a href="https://whatsapp.com/channel/0029VbBxAYA5PO19iRULUt14" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20251114-WA0031(1).jpg"><h3>ملصقات مضحكة</h3><a href="https://whatsapp.com/channel/0029VbBwRu9JkK75Ueoj0B34" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20260101-WA0003.jpg"><h3>مقاطع مضحكة</h3><a href="https://whatsapp.com/channel/0029Vb7MzTgIt5s3frO3QQ2g" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20251126-WA0072.jpg"><h3>معلومات تافهة</h3><a href="https://whatsapp.com/channel/0029VbAufHN3wtbEVjWzDy2f" class="btn">انضم الآن</a></div>
+    <div id="login-overlay" class="login-overlay">
+        <div class="login-card">
+            <h2 style="color:var(--primary); margin-bottom:20px;">دخول الجوكر 👨‍🦯</h2>
+            <input type="email" id="admin-email" placeholder="البريد الإلكتروني المسموح" style="width:100%; padding:12px; margin-bottom:15px; border-radius:10px;">
+            <button onclick="verifyAdmin()" style="width:100%; padding:12px; background:var(--primary); border:none; border-radius:10px; font-weight:bold; cursor:pointer;">تأكيد الهوية</button>
+            <button onclick="closeLogin()" style="margin-top:10px; background:none; border:none; color:#64748b; cursor:pointer;">إلغاء</button>
+        </div>
     </div>
 
-    <h2 class="section-title">💖 الحب والمشاعر</h2>
-    <div class="grid">
-        <div class="card"><img src="IMG-20251025-WA0055(1).jpg"><h3>عالم الحب والعشق</h3><a href="https://whatsapp.com/channel/0029Vag9IXyFnSz36S2Q2L2r" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20251121-WA0019(1).jpg"><h3>كبرياء رجل وغرور أنثى</h3><a href="https://whatsapp.com/channel/0029VaM22Q1GZNCs342ZUL3q" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20260101-WA0002.jpg"><h3>أفنان - قصص حب</h3><a href="https://whatsapp.com/channel/0029VbAODsB6hENl7DPwhT0K" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20251205-WA0094(1).jpg"><h3>فيديوهات حب</h3><a href="https://whatsapp.com/channel/0029VazNYGU3bbUvGvIZtQ1X/1598" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20260101-WA0001.jpg"><h3>Stickers Love</h3><a href="https://whatsapp.com/channel/0029VajEuafBKfi6URrMh93y" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="Screenshot_٠١٣٤٥٥_٢٠٢٦٠١٠١_WhatsApp.jpg"><h3>منشورات مميزة</h3><a href="https://whatsapp.com/channel/0029VazNYGU3bbUvGvIZtQ1X" class="btn">انضم الآن</a></div>
+    <div id="admin-panel">
+        <div class="admin-tabs">
+            <button class="tab-btn active" onclick="switchTab('add')">➕ إضافة قناة</button>
+            <button class="tab-btn" onclick="switchTab('stats')">📊 الإحصائيات</button>
+            <button onclick="logoutAdmin()" style="margin-right:auto; background:#e74c3c;" class="tab-btn">خروج</button>
+        </div>
+
+        <div id="add-tab">
+            <h3>إضافة قناة جديدة للموقع</h3>
+            <div class="form-group">
+                <input type="text" id="ch-name" placeholder="اسم القناة">
+                <input type="text" id="ch-img" placeholder="اسم صورة الملف المرفوعة (مثل: IMG-2025.jpg)">
+                <input type="text" id="ch-link" placeholder="رابط قناة الواتساب">
+                <select id="ch-cat">
+                    <option value="ضحك">ضحك وتسلية</option>
+                    <option value="حب">حب ومشاعر</option>
+                    <option value="هدوء">هدوء وروحانيات</option>
+                </select>
+                <button onclick="addNewChannel()" style="width:100%; padding:12px; background:var(--admin); border:none; border-radius:10px; color:#fff; font-weight:bold; margin-top:10px;">حفظ ونشر القناة</button>
+            </div>
+        </div>
+
+        <div id="stats-tab" style="display:none;">
+            <h3>الرؤى والإحصائيات الحالية</h3>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:15px; margin-top:15px;">
+                <div style="background:var(--glass); padding:20px; border-radius:15px; text-align:center;"><h4>1,452</h4><p>زيارة فريدة</p></div>
+                <div style="background:var(--glass); padding:20px; border-radius:15px; text-align:center;"><h4>320</h4><p>نقرات الروابط</p></div>
+                <div style="background:var(--glass); padding:20px; border-radius:15px; text-align:center;"><h4>18</h4><p>إجمالي القنوات</p></div>
+            </div>
+        </div>
     </div>
 
-    <h2 class="section-title">🌙 هدوء وروحانيات</h2>
-    <div class="grid">
-        <div class="card"><img src="IMG-20251128-WA0004(1).jpg"><h3>قرآن كريم</h3><a href="https://whatsapp.com/channel/0029Vaq1YlbIXnlvv05yOj2t" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20251127-WA0010(1).jpg"><h3>عالم الحزن والاكتئاب</h3><a href="https://whatsapp.com/channel/0029Vah9yu64SpkPw5bheK2w" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20251202-WA0011(1).jpg"><h3>اكتئاب</h3><a href="https://whatsapp.com/channel/0029VbCmQMOBqbrA7B6kxi1f" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20251201-WA0078(1).jpg"><h3>مقهى البؤساء</h3><a href="https://whatsapp.com/channel/0029VbBI66nBfxoB8F4GgT3j" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="IMG-20251113-WA0100(1).jpg"><h3>اقتباسات وخلفيات</h3><a href="https://whatsapp.com/channel/0029VbBTfaxF1YlRLVbInU2R" class="btn">انضم الآن</a></div>
-        <div class="card"><img src="Screenshot_٢٠٢٦٠١٠١-١٣٠٤٥_WhatsApp.jpg"><h3>د. هالة سمير</h3><a href="https://whatsapp.com/channel/0029Vb6v4OVHltY5hf1x2H1f" class="btn">انضم الآن</a></div>
+    <header><h1>🌟 دليل قنوات واتساب 2026</h1><p>بإشراف الجوكر</p></header>
+
+    <div id="main-content">
+        <h2 class="section-title">🔥 القنوات المضافة</h2>
+        <div class="grid" id="channels-grid">
+            <div class="card">
+                <div class="admin-actions"><button class="edit-btn">تعديل</button><button class="delete-btn">حذف</button></div>
+                <img src="IMG-20251127-WA0012(1).jpg">
+                <h3>نكت وصور مضحكة</h3>
+                <a href="https://whatsapp.com/channel/0029VaFDOVyGE56kJdojZ21y" class="btn">انضم الآن</a>
+            </div>
+            </div>
     </div>
 
-    <footer>
-        <p>جميع الحقوق محفوظة <span class="copyright">للجوكر 👨‍🦯</span> &copy; 2026</p>
-    </footer>
+    <footer><p>جميع الحقوق محفوظة <span style="color:var(--primary); font-weight:bold;">للجوكر 👨‍🦯</span> &copy; 2026</p></footer>
 </div>
+
+<script>
+    function openLogin() { document.getElementById('login-overlay').style.display = 'flex'; }
+    function closeLogin() { document.getElementById('login-overlay').style.display = 'none'; }
+
+    function verifyAdmin() {
+        const email = document.getElementById('admin-email').value;
+        if(email === "almashwlyamyn@gmail.com") {
+            alert("أهلاً بك يا جوكر! تم فتح صلاحيات الإدارة.");
+            document.getElementById('login-overlay').style.display = 'none';
+            document.getElementById('admin-panel').style.display = 'block';
+            document.querySelectorAll('.admin-actions').forEach(el => el.style.display = 'flex');
+        } else {
+            alert("البريد غير صحيح. الوصول مرفوض!");
+        }
+    }
+
+    function switchTab(tab) {
+        document.getElementById('add-tab').style.display = tab === 'add' ? 'block' : 'none';
+        document.getElementById('stats-tab').style.display = tab === 'stats' ? 'block' : 'none';
+    }
+
+    function addNewChannel() {
+        const name = document.getElementById('ch-name').value;
+        const img = document.getElementById('ch-img').value;
+        const link = document.getElementById('ch-link').value;
+        
+        if(name && img && link) {
+            const grid = document.getElementById('channels-grid');
+            const newCard = `
+                <div class="card">
+                    <div class="admin-actions" style="display:flex"><button class="edit-btn">تعديل</button><button class="delete-btn">حذف</button></div>
+                    <img src="${img}">
+                    <h3>${name}</h3>
+                    <a href="${link}" class="btn">انضم الآن</a>
+                </div>`;
+            grid.innerHTML = newCard + grid.innerHTML;
+            alert("تمت إضافة القناة بنجاح!");
+        }
+    }
+
+    function logoutAdmin() { location.reload(); }
+</script>
 </body>
 </html>
-
